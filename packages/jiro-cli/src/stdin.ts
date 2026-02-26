@@ -1,5 +1,5 @@
-import { createInterface } from "node:readline";
 import { stdin } from "node:process";
+import { createInterface } from "node:readline";
 
 export async function readStdin(): Promise<string[]> {
 	const lines: string[] = [];

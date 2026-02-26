@@ -21,7 +21,10 @@ export const DEFAULT_LEVELS: Record<Modifier, number> = {
 
 export function createEvaluator(shop: Shop): (ast: CallNode) => CallResult {
 	const defaults = shop.defaults ?? {};
-	const levels: Record<Modifier, number> = { ...DEFAULT_LEVELS, ...shop.levels };
+	const levels: Record<Modifier, number> = {
+		...DEFAULT_LEVELS,
+		...shop.levels,
+	};
 	const bareModifier = shop.bareCallModifier ?? "マシ";
 
 	function toToppingResult(topping: string, modifier: Modifier): ToppingResult {
@@ -30,9 +33,7 @@ export function createEvaluator(shop: Shop): (ast: CallNode) => CallResult {
 			throw new Error(`${topping} はこの店舗ではコールできません`);
 		}
 		const effective =
-			modifier === "普通" && (defaultLevel ?? 0) > 0
-				? bareModifier
-				: modifier;
+			modifier === "普通" && (defaultLevel ?? 0) > 0 ? bareModifier : modifier;
 		return {
 			topping: topping as ToppingResult["topping"],
 			modifier: effective,
@@ -46,9 +47,9 @@ export function createEvaluator(shop: Shop): (ast: CallNode) => CallResult {
 				return { toppings: [] };
 
 			case "aggregate": {
-				const toppings = CORE_TOPPINGS.filter(
-					(t) => defaults[t] !== null,
-				).map((t) => toToppingResult(t, ast.modifier));
+				const toppings = CORE_TOPPINGS.filter((t) => defaults[t] !== null).map(
+					(t) => toToppingResult(t, ast.modifier),
+				);
 				return { toppings };
 			}
 

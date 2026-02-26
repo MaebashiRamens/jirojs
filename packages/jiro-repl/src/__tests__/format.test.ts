@@ -1,6 +1,6 @@
+import type { CallResult } from "jirojs";
 import { describe, expect, it } from "vitest";
 import { formatResult } from "../format";
-import type { CallResult } from "jirojs";
 
 describe("formatResult", () => {
 	it("トッピングなし", () => {

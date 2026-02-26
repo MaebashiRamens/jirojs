@@ -18,13 +18,20 @@ describe("parse", () => {
 
 	describe("全マシ系", () => {
 		it("全マシ → AggregateNode modifier マシ", () => {
-			const tokens: Token[] = [{ type: "aggregate", value: "全マシ", raw: "全マシ" }];
+			const tokens: Token[] = [
+				{ type: "aggregate", value: "全マシ", raw: "全マシ" },
+			];
 			expect(parse(tokens)).toEqual({ type: "aggregate", modifier: "マシ" });
 		});
 
 		it("全マシマシ → AggregateNode modifier マシマシ", () => {
-			const tokens: Token[] = [{ type: "aggregate", value: "全マシマシ", raw: "全マシマシ" }];
-			expect(parse(tokens)).toEqual({ type: "aggregate", modifier: "マシマシ" });
+			const tokens: Token[] = [
+				{ type: "aggregate", value: "全マシマシ", raw: "全マシマシ" },
+			];
+			expect(parse(tokens)).toEqual({
+				type: "aggregate",
+				modifier: "マシマシ",
+			});
 		});
 	});
 
@@ -46,7 +53,9 @@ describe("parse", () => {
 			];
 			expect(parse(tokens)).toEqual({
 				type: "topping_list",
-				items: [{ type: "topping_spec", topping: "ニンニク", modifier: "普通" }],
+				items: [
+					{ type: "topping_spec", topping: "ニンニク", modifier: "普通" },
+				],
 			});
 		});
 
@@ -86,5 +95,4 @@ describe("parse", () => {
 			});
 		});
 	});
-
 });

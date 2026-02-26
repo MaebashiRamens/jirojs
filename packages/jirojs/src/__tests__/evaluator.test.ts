@@ -81,6 +81,5 @@ describe("evaluate", () => {
 			const ast: CallNode = { type: "topping_list", items: [] };
 			expect(evaluate(ast)).toEqual({ toppings: [] });
 		});
-
 	});
 });

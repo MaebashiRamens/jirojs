@@ -18,7 +18,9 @@
 			}
 		}
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "tsup",
 		"test": "vitest run",
@@ -35,5 +37,12 @@
 		"directory": "packages/jirojs"
 	},
 	"license": "MIT",
-	"keywords": ["jiro", "ramen", "parser", "二郎", "ラーメン二郎", "コール"]
+	"keywords": [
+		"jiro",
+		"ramen",
+		"parser",
+		"二郎",
+		"ラーメン二郎",
+		"コール"
+	]
 }

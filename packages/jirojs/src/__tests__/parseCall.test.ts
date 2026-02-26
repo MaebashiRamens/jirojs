@@ -267,7 +267,6 @@ describe("parseCall（統合テスト）", () => {
 		});
 	});
 
-
 	describe("拡張トッピング", () => {
 		it("ショウガ", () => {
 			expect(parseCall("ショウガ")).toEqual({

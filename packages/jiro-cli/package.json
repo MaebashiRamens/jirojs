@@ -6,7 +6,9 @@
 	"bin": {
 		"jiro": "./dist/index.mjs"
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "tsup",
 		"test": "vitest run",
@@ -22,5 +24,11 @@
 		"vitest": "^3"
 	},
 	"license": "MIT",
-	"keywords": ["jiro", "ramen", "cli", "二郎", "ラーメン二郎"]
+	"keywords": [
+		"jiro",
+		"ramen",
+		"cli",
+		"二郎",
+		"ラーメン二郎"
+	]
 }

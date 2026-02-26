@@ -121,21 +121,27 @@ describe("tokenize", () => {
 
 	describe("tokenizeNoodle", () => {
 		it("麺少なめ", () => {
-			expect(tokenizeNoodle("麺少なめ")).toEqual(
-				{ type: "noodle", value: "少なめ", raw: "麺少なめ" },
-			);
+			expect(tokenizeNoodle("麺少なめ")).toEqual({
+				type: "noodle",
+				value: "少なめ",
+				raw: "麺少なめ",
+			});
 		});
 
 		it("麺半分", () => {
-			expect(tokenizeNoodle("麺半分")).toEqual(
-				{ type: "noodle", value: "半分", raw: "麺半分" },
-			);
+			expect(tokenizeNoodle("麺半分")).toEqual({
+				type: "noodle",
+				value: "半分",
+				raw: "麺半分",
+			});
 		});
 
 		it("麺硬め", () => {
-			expect(tokenizeNoodle("麺硬め")).toEqual(
-				{ type: "noodle", value: "硬め", raw: "麺硬め" },
-			);
+			expect(tokenizeNoodle("麺硬め")).toEqual({
+				type: "noodle",
+				value: "硬め",
+				raw: "麺硬め",
+			});
 		});
 
 		it("不一致で null", () => {

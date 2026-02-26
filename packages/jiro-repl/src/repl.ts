@@ -1,14 +1,14 @@
-import { createInterface } from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
+import { createInterface } from "node:readline/promises";
 import { decode, parseCall, tokenize } from "jirojs";
-import { formatResult } from "./format";
-import { completer } from "./completer";
 import {
 	examplesText,
 	helpText,
 	modifiersText,
 	toppingsText,
 } from "./commands";
+import { completer } from "./completer";
+import { formatResult } from "./format";
 
 function handleCommand(line: string): boolean {
 	switch (line) {

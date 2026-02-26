@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { parse } from "../args";
 
-const argv = (args: string) => ["node", "jiro", ...args.split(" ").filter(Boolean)];
+const argv = (args: string) => [
+	"node",
+	"jiro",
+	...args.split(" ").filter(Boolean),
+];
 
 describe("parse", () => {
 	it("位置引数をinputsに格納", () => {

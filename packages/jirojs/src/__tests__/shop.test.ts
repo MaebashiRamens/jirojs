@@ -73,7 +73,9 @@ describe("createEvaluator", () => {
 				type: "topping_list",
 				items: [{ type: "topping_spec", topping: "カラメ", modifier: "マシ" }],
 			};
-			expect(() => evaluate(ast)).toThrow("カラメ はこの店舗ではコールできません");
+			expect(() => evaluate(ast)).toThrow(
+				"カラメ はこの店舗ではコールできません",
+			);
 		});
 
 		it("全マシでカラメがスキップされる", () => {
@@ -98,7 +100,9 @@ describe("createEvaluator", () => {
 		it("少なめが普通とマシの間（1.5）に設定される", () => {
 			const ast: CallNode = {
 				type: "topping_list",
-				items: [{ type: "topping_spec", topping: "ヤサイ", modifier: "少なめ" }],
+				items: [
+					{ type: "topping_spec", topping: "ヤサイ", modifier: "少なめ" },
+				],
 			};
 			expect(evaluate(ast)).toEqual({
 				toppings: [{ topping: "ヤサイ", modifier: "少なめ", level: 1.5 }],
@@ -114,7 +118,11 @@ describe("createEvaluator", () => {
 			};
 			expect(evaluate(ast)).toEqual({
 				toppings: [
-					{ topping: "ニンニク", modifier: "マシマシ", level: DEFAULT_LEVELS["マシマシ"] },
+					{
+						topping: "ニンニク",
+						modifier: "マシマシ",
+						level: DEFAULT_LEVELS["マシマシ"],
+					},
 				],
 			});
 		});
@@ -184,7 +192,9 @@ describe("createParseCall", () => {
 
 	it("ハイマウントM: カラメをコールするとエラー", () => {
 		const parse = createParseCall(HIGHMOUNT_M);
-		expect(() => parse("カラメ")).toThrow("カラメ はこの店舗ではコールできません");
+		expect(() => parse("カラメ")).toThrow(
+			"カラメ はこの店舗ではコールできません",
+		);
 	});
 
 	it("カスタムレベル: 少なめ = 1.5 の店", () => {

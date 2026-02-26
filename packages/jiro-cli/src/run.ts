@@ -1,4 +1,4 @@
-import { parse, HELP_TEXT } from "./args";
+import { HELP_TEXT, parse } from "./args";
 import { format } from "./output";
 import { readStdin } from "./stdin";
 
@@ -17,8 +17,7 @@ export async function run(argv: string[]): Promise<number> {
 		return 0;
 	}
 
-	const inputs =
-		args.inputs.length > 0 ? args.inputs : await readStdin();
+	const inputs = args.inputs.length > 0 ? args.inputs : await readStdin();
 
 	if (inputs.length === 0) {
 		console.error("エラー: コール文字列を指定してください（-h でヘルプ表示）");

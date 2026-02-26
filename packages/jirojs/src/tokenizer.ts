@@ -1,4 +1,11 @@
-import type { AggregateModifier, Modifier, NoodleOption, NoodleToken, Token, Topping } from "./types";
+import type {
+	AggregateModifier,
+	Modifier,
+	NoodleOption,
+	NoodleToken,
+	Token,
+	Topping,
+} from "./types";
 
 // Sorted by pattern length descending for greedy matching
 const TOPPING_PATTERNS: [string, Topping][] = [
@@ -82,7 +89,11 @@ export function tokenize(input: string): Token[] {
 		// Aggregate
 		const aggMatch = matchLongest(trimmed, pos, AGGREGATE_PATTERNS);
 		if (aggMatch) {
-			tokens.push({ type: "aggregate", value: aggMatch.value, raw: aggMatch.raw });
+			tokens.push({
+				type: "aggregate",
+				value: aggMatch.value,
+				raw: aggMatch.raw,
+			});
 			pos += aggMatch.raw.length;
 			continue;
 		}
@@ -90,7 +101,11 @@ export function tokenize(input: string): Token[] {
 		// Topping
 		const toppingMatch = matchLongest(trimmed, pos, TOPPING_PATTERNS);
 		if (toppingMatch) {
-			tokens.push({ type: "topping", value: toppingMatch.value, raw: toppingMatch.raw });
+			tokens.push({
+				type: "topping",
+				value: toppingMatch.value,
+				raw: toppingMatch.raw,
+			});
 			pos += toppingMatch.raw.length;
 			continue;
 		}
@@ -98,7 +113,11 @@ export function tokenize(input: string): Token[] {
 		// Modifier
 		const modifierMatch = matchLongest(trimmed, pos, MODIFIER_PATTERNS);
 		if (modifierMatch) {
-			tokens.push({ type: "modifier", value: modifierMatch.value, raw: modifierMatch.raw });
+			tokens.push({
+				type: "modifier",
+				value: modifierMatch.value,
+				raw: modifierMatch.raw,
+			});
 			pos += modifierMatch.raw.length;
 			continue;
 		}

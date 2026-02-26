@@ -15,7 +15,13 @@ export type ExtendedTopping =
 export type Topping = CoreTopping | ExtendedTopping;
 
 /** Modifiers from least to most, in canonical form */
-export type Modifier = "ナシ" | "少なめ" | "ちょいマシ" | "普通" | "マシ" | "マシマシ";
+export type Modifier =
+	| "ナシ"
+	| "少なめ"
+	| "ちょいマシ"
+	| "普通"
+	| "マシ"
+	| "マシマシ";
 
 /** Noodle-specific options (separate from the topping call) */
 export type NoodleOption = "少なめ" | "半分" | "硬め";
