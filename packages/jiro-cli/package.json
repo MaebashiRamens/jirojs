@@ -1,0 +1,26 @@
+{
+	"name": "jiro-cli",
+	"version": "0.1.0",
+	"description": "CLI tool for parsing and normalizing Ramen Jiro call strings (ラーメン二郎コール CLI)",
+	"type": "module",
+	"bin": {
+		"jiro": "./dist/index.mjs"
+	},
+	"files": ["dist"],
+	"scripts": {
+		"build": "tsup",
+		"test": "vitest run",
+		"lint": "tsc --noEmit"
+	},
+	"dependencies": {
+		"jirojs": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/node": "^25",
+		"tsup": "^8",
+		"typescript": "^5",
+		"vitest": "^3"
+	},
+	"license": "MIT",
+	"keywords": ["jiro", "ramen", "cli", "二郎", "ラーメン二郎"]
+}

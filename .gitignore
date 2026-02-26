@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Nix
+.direnv/
+result
+
+# Claude Code
+.claude/settings.local.json
+
+# Coverage (vitest)
+coverage/
+
+# OS
+.DS_Store

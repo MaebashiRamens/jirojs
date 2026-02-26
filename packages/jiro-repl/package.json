@@ -1,0 +1,37 @@
+{
+	"name": "jiro-repl",
+	"version": "0.1.0",
+	"description": "Interactive interpreter for Ramen Jiro call strings (ラーメン二郎コール インタプリタ)",
+	"type": "module",
+	"bin": {
+		"jiro-repl": "./dist/index.mjs"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup",
+		"test": "vitest run",
+		"lint": "tsc --noEmit",
+		"start": "node --import tsx src/index.ts"
+	},
+	"dependencies": {
+		"jirojs": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/node": "^25.3.1",
+		"tsup": "^8",
+		"tsx": "^4",
+		"typescript": "^5",
+		"vitest": "^3"
+	},
+	"license": "MIT",
+	"keywords": [
+		"jiro",
+		"ramen",
+		"repl",
+		"interpreter",
+		"二郎",
+		"ラーメン二郎"
+	]
+}
