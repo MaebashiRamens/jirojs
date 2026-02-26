@@ -1,0 +1,11 @@
+{
+	"$schema": "https://unpkg.com/@changesets/config@3/schema.json",
+	"changelog": "@changesets/cli/changelog",
+	"commit": false,
+	"fixed": [],
+	"linked": [["jirojs", "jiro-cli", "jiro-repl"]],
+	"access": "public",
+	"baseBranch": "master",
+	"updateInternalDependencies": "patch",
+	"ignore": []
+}

@@ -33,9 +33,8 @@ jobs:
 
       - run: pnpm test
 
-      - name: Publish jirojs
-        run: pnpm publish --no-git-checks --access public --provenance
-        working-directory: packages/jirojs
+      - name: Publish packages
+        run: pnpm -r publish --no-git-checks --access public --provenance
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

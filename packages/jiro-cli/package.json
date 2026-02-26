@@ -21,6 +21,11 @@
 		"typescript": "^5",
 		"vitest": "^3"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MaebashiRamens/jirojs.git",
+		"directory": "packages/jiro-cli"
+	},
 	"license": "MIT",
 	"keywords": ["jiro", "ramen", "cli", "二郎", "ラーメン二郎"]
 }

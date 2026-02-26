@@ -4,6 +4,12 @@
 	"scripts": {
 		"build": "pnpm -r build",
 		"test": "pnpm -r test",
-		"lint": "pnpm -r lint"
+		"lint": "pnpm -r lint",
+		"changeset": "changeset",
+		"version-packages": "changeset version",
+		"release": "changeset publish"
+	},
+	"devDependencies": {
+		"@changesets/cli": "^2.29.8"
 	}
 }
