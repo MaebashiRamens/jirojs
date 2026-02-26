@@ -16,13 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
+      - uses: DeterminateSystems/nix-installer-action@main
 
-      - uses: actions/setup-node@v6
-        with:
-          node-version-file: .node-version
-          registry-url: https://registry.npmjs.org
-          cache: pnpm
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - uses: nicknovitski/nix-develop@v1
 
       - run: pnpm install --frozen-lockfile
 
