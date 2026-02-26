@@ -115,3 +115,29 @@ export interface ToppingResult {
 export interface NoodleResult {
 	option: NoodleOption;
 }
+
+// ---------------------------------------------------------------------------
+// Shop
+// ---------------------------------------------------------------------------
+
+export interface Shop {
+	/** 店舗名 */
+	name: string;
+	/**
+	 * 各トッピングのデフォルト量。
+	 * null = コール不可（評価時にエラー）
+	 * 0 = 未入り, 1 = 標準量入り。
+	 * 未設定のトッピングは 0（未入り）として扱う。
+	 */
+	defaults?: Partial<Record<Topping, number | null>>;
+	/**
+	 * モディファイアのレベルマッピング。
+	 * 未設定のモディファイアはデフォルト値を使用。
+	 */
+	levels?: Partial<Record<Modifier, number>>;
+	/**
+	 * デフォルト入りトッピングの名前だけコール時に適用するモディファイア。
+	 * デフォルト: "マシ"
+	 */
+	bareCallModifier?: Modifier;
+}

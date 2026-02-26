@@ -42,21 +42,37 @@ describe("evaluate", () => {
 				type: "topping_list",
 				items: [
 					{ type: "topping_spec", topping: "ニンニク", modifier: "ナシ" },
-					{ type: "topping_spec", topping: "ヤサイ", modifier: "少なめ" },
-					{ type: "topping_spec", topping: "アブラ", modifier: "普通" },
-					{ type: "topping_spec", topping: "カラメ", modifier: "ちょいマシ" },
-					{ type: "topping_spec", topping: "ショウガ", modifier: "マシ" },
+					{ type: "topping_spec", topping: "カラメ", modifier: "少なめ" },
+					{ type: "topping_spec", topping: "ニンニク", modifier: "普通" },
+					{ type: "topping_spec", topping: "ショウガ", modifier: "ちょいマシ" },
+					{ type: "topping_spec", topping: "ヤサイ", modifier: "マシ" },
 					{ type: "topping_spec", topping: "ガリマヨ", modifier: "マシマシ" },
 				],
 			};
 			expect(evaluate(ast)).toEqual({
 				toppings: [
 					{ topping: "ニンニク", modifier: "ナシ", level: 0 },
-					{ topping: "ヤサイ", modifier: "少なめ", level: 0.5 },
-					{ topping: "アブラ", modifier: "普通", level: 1 },
-					{ topping: "カラメ", modifier: "ちょいマシ", level: 1.5 },
-					{ topping: "ショウガ", modifier: "マシ", level: 2 },
+					{ topping: "カラメ", modifier: "少なめ", level: 0.5 },
+					{ topping: "ニンニク", modifier: "普通", level: 1 },
+					{ topping: "ショウガ", modifier: "ちょいマシ", level: 1.5 },
+					{ topping: "ヤサイ", modifier: "マシ", level: 2 },
 					{ topping: "ガリマヨ", modifier: "マシマシ", level: 3 },
+				],
+			});
+		});
+
+		it("デフォルト入りトッピングは名前だけのコールでマシに正規化", () => {
+			const ast: CallNode = {
+				type: "topping_list",
+				items: [
+					{ type: "topping_spec", topping: "ヤサイ", modifier: "普通" },
+					{ type: "topping_spec", topping: "アブラ", modifier: "普通" },
+				],
+			};
+			expect(evaluate(ast)).toEqual({
+				toppings: [
+					{ topping: "ヤサイ", modifier: "マシ", level: 2 },
+					{ topping: "アブラ", modifier: "マシ", level: 2 },
 				],
 			});
 		});

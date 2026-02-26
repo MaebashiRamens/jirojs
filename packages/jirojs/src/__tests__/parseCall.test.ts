@@ -9,15 +9,15 @@ describe("parseCall（統合テスト）", () => {
 			});
 		});
 
-		it("ヤサイ", () => {
+		it("ヤサイ（デフォルト入り → マシ相当）", () => {
 			expect(parseCall("ヤサイ")).toEqual({
-				toppings: [{ topping: "ヤサイ", modifier: "普通", level: 1 }],
+				toppings: [{ topping: "ヤサイ", modifier: "マシ", level: 2 }],
 			});
 		});
 
-		it("アブラ", () => {
+		it("アブラ（デフォルト入り → マシ相当）", () => {
 			expect(parseCall("アブラ")).toEqual({
-				toppings: [{ topping: "アブラ", modifier: "普通", level: 1 }],
+				toppings: [{ topping: "アブラ", modifier: "マシ", level: 2 }],
 			});
 		});
 
@@ -25,6 +25,20 @@ describe("parseCall（統合テスト）", () => {
 			expect(parseCall("カラメ")).toEqual({
 				toppings: [{ topping: "カラメ", modifier: "普通", level: 1 }],
 			});
+		});
+	});
+
+	describe("デフォルト入りトッピングの等価性", () => {
+		it("ヤサイ = ヤサイマシ", () => {
+			expect(parseCall("ヤサイ")).toEqual(parseCall("ヤサイマシ"));
+		});
+
+		it("アブラ = アブラマシ", () => {
+			expect(parseCall("アブラ")).toEqual(parseCall("アブラマシ"));
+		});
+
+		it("ニンニクは等価にならない（デフォルト未入り）", () => {
+			expect(parseCall("ニンニク")).not.toEqual(parseCall("ニンニクマシ"));
 		});
 	});
 
@@ -66,7 +80,7 @@ describe("parseCall（統合テスト）", () => {
 				toppings: [
 					{ topping: "ヤサイ", modifier: "マシマシ", level: 3 },
 					{ topping: "ニンニク", modifier: "普通", level: 1 },
-					{ topping: "アブラ", modifier: "普通", level: 1 },
+					{ topping: "アブラ", modifier: "マシ", level: 2 },
 					{ topping: "カラメ", modifier: "普通", level: 1 },
 				],
 			});
@@ -76,8 +90,8 @@ describe("parseCall（統合テスト）", () => {
 			expect(parseCall("ニンニクヤサイアブラ")).toEqual({
 				toppings: [
 					{ topping: "ニンニク", modifier: "普通", level: 1 },
-					{ topping: "ヤサイ", modifier: "普通", level: 1 },
-					{ topping: "アブラ", modifier: "普通", level: 1 },
+					{ topping: "ヤサイ", modifier: "マシ", level: 2 },
+					{ topping: "アブラ", modifier: "マシ", level: 2 },
 				],
 			});
 		});
@@ -98,7 +112,7 @@ describe("parseCall（統合テスト）", () => {
 		it("ヤサイカラメ → 2つの別々のトッピング", () => {
 			expect(parseCall("ヤサイカラメ")).toEqual({
 				toppings: [
-					{ topping: "ヤサイ", modifier: "普通", level: 1 },
+					{ topping: "ヤサイ", modifier: "マシ", level: 2 },
 					{ topping: "カラメ", modifier: "普通", level: 1 },
 				],
 			});

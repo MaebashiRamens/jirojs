@@ -1,8 +1,9 @@
 export { tokenize, tokenizeNoodle } from "./tokenizer";
 export { parse } from "./parser";
-export { evaluate } from "./evaluator";
+export { evaluate, createEvaluator, DEFAULT_LEVELS } from "./evaluator";
+export { JIRO_DIRECT, HIGHMOUNT_M } from "./shops";
 export { decode } from "./decoder";
-export { parseCall } from "./parseCall";
+export { parseCall, createParseCall } from "./parseCall";
 export { parseNoodle } from "./parseNoodle";
 
 export type {
@@ -20,6 +21,7 @@ export type {
 	NoodleOption,
 	NoodleResult,
 	NoodleToken,
+	Shop,
 	SonomamaNode,
 	SonomamaToken,
 	Token,
