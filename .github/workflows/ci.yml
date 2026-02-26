@@ -25,6 +25,9 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: Build jirojs (needed for downstream type checking)
+        run: pnpm --filter jirojs build
+
       - name: Type check
         run: pnpm lint
 
