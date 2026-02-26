@@ -86,7 +86,7 @@ At Ramen Jiro, when staff asks 「ニンニク入れますか？」, the custome
 ### Core Toppings (Direct Jiro / 直系)
 
 | Topping | Aliases | Default |
-|---------|---------|---------|
+| --------- | --------- | --------- |
 | ニンニク (garlic) | — | Not included |
 | ヤサイ (vegetables) | 野菜 | Included at standard amount |
 | アブラ (fat) | 脂 | Included at standard amount |
@@ -99,7 +99,7 @@ At Ramen Jiro, when staff asks 「ニンニク入れますか？」, the custome
 ### Modifiers (least to most)
 
 | Modifier | Aliases | Meaning |
-|----------|---------|---------|
+| ---------- | --------- | --------- |
 | ナシ | 抜き, なし | Remove |
 | 少なめ | スクナメ, 少し, ちょっと | Less |
 | ちょいマシ | — | Slightly more |
