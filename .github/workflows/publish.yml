@@ -36,7 +36,7 @@ jobs:
       - run: pnpm test
 
       - name: Publish jirojs
-        run: pnpm publish --no-git-checks --access public
+        run: pnpm publish --no-git-checks --access public --provenance
         working-directory: packages/jirojs
 
       - name: Create GitHub Release

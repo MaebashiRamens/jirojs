@@ -45,6 +45,7 @@
               pkgs.pnpm
               pkgs.typescript
               pkgs.nodePackages.typescript-language-server
+              pkgs.act
               (treefmtFor system).config.build.wrapper
             ];
           };
