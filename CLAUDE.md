@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Quick Links
+
+- [Nix Language](docs/guides/nix-language.md) - Language quick reference, anti-patterns, flake/treefmt patterns
+- [Nix Troubleshooting](docs/troubleshooting/nix-common-issues.md) - Debug commands, common issues, validation checklist
+
 ## Project Overview
 
 `jirojs` is a TypeScript library that parses Ramen Jiro (ラーメン二郎) call strings (コール文字列). It takes a string like `"ヤサイマシマシニンニクアブラカラメ"` and outputs a structured representation of each topping and its modifier.
@@ -43,6 +48,34 @@ treefmt           # Same as above, available in devShell
 - `flake.nix` provides devShell with: nodejs, pnpm, typescript, typescript-language-server, treefmt wrapper
 - treefmt-nix is used to configure formatters declaratively via `treefmt.nix`
 - `nix fmt` = project-wide formatting, `nix flake check` = CI formatting check
+
+## Essential Rules
+
+1. **Development environment**: Always use `nix develop` (or direnv) for a reproducible environment
+2. **ALWAYS format with treefmt** before committing. treefmt runs Biome (TS/JS/JSON) and nixfmt (Nix) in one command. **Never run biome or nixfmt directly** — always use treefmt:
+
+   ```bash
+   treefmt
+   ```
+
+3. **ALWAYS validate** after any `.nix` file change:
+
+   ```bash
+   nix flake check
+   ```
+
+4. **Run tests** after code changes:
+
+   ```bash
+   pnpm test
+   ```
+
+## Nix Anti-Patterns to Avoid
+
+- Avoid `rec { }` → use `let ... in` instead (prevents infinite recursion)
+- Avoid top-level `with` statements (obscures scope, hides bugs)
+- Avoid lookup paths `<...>` → use flake inputs (ensures reproducibility)
+- Always quote URLs (RFC 45)
 
 ## Domain: Jiro Call Parsing
 

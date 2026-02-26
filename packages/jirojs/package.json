@@ -29,6 +29,11 @@
 		"typescript": "^5",
 		"vitest": "^3"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hayao/jirojs.git",
+		"directory": "packages/jirojs"
+	},
 	"license": "MIT",
 	"keywords": ["jiro", "ramen", "parser", "二郎", "ラーメン二郎", "コール"]
 }
