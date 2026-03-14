@@ -23,8 +23,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 pnpm build        # Build with tsup (outputs dist/ with ESM .mjs + CJS .cjs + .d.ts)
 pnpm test         # Run tests with vitest
 pnpm lint         # Type-check with tsc --noEmit
-nix fmt           # Format all files via treefmt (calls biome for TS/JS/JSON, nixfmt for .nix)
-treefmt           # Same as above, available in devShell
+nix fmt           # Format all files (biome for TS/JS/JSON, nixfmt for .nix). ALWAYS use this, never bare `treefmt`
 ```
 
 ## Architecture
@@ -37,25 +36,25 @@ treefmt           # Same as above, available in devShell
 
 ### Formatting & Linting
 
-- **treefmt** is the single entry point for all formatting, configured in `treefmt.nix`.
+- **`nix fmt`** is the ONLY correct way to format. It invokes treefmt via the flake with the correct config.
 - **Biome** handles TypeScript/JavaScript/JSON formatting and linting (replaces ESLint + Prettier).
 - **nixfmt** handles `.nix` file formatting.
-- Biome configuration is either inline in `treefmt.nix` settings or in a `biome.json` at root.
+- Biome configuration is in `biome.json` at root; treefmt integration is in `treefmt.nix`.
 - `nix flake check` verifies formatting in CI.
 
 ### Nix Integration
 
 - `flake.nix` provides devShell with: nodejs, pnpm, typescript, typescript-language-server, treefmt wrapper
 - treefmt-nix is used to configure formatters declaratively via `treefmt.nix`
-- `nix fmt` = project-wide formatting, `nix flake check` = CI formatting check
+- `nix fmt` = project-wide formatting (ALWAYS use this), `nix flake check` = CI formatting check
 
 ## Essential Rules
 
 1. **Development environment**: Always use `nix develop` (or direnv) for a reproducible environment
-2. **ALWAYS format with treefmt** before committing. treefmt runs Biome (TS/JS/JSON) and nixfmt (Nix) in one command. **Never run biome or nixfmt directly** — always use treefmt:
+2. **ALWAYS format with `nix fmt`** before committing. This runs the flake's treefmt wrapper (Biome for TS/JS/JSON + nixfmt for .nix). **NEVER use bare `treefmt` or run biome/nixfmt directly** — bare `treefmt` may resolve to a different binary that only formats `.nix` files, silently skipping all TS/JS/JSON. `nix fmt` is the ONLY safe command:
 
    ```bash
-   treefmt
+   nix fmt
    ```
 
 3. **ALWAYS validate** after any `.nix` file change:
